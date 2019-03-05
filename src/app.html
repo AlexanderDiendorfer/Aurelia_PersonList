@@ -1,0 +1,20 @@
+<template>
+  <h1>PersonenListe</h1>
+  <p if.bind="personList == null || personList.length == 0">Keine Personen vorhanden</p>
+<ul>
+  <li repeat.for="person of personList">${$index}- ${person.firstName} ${person.lastName}
+  <button click.delegate="removePersonByIndex($index)">Entfernen</button>
+</li> 
+</ul>  
+
+<button click.delegate="clearList()">Clear List</button>
+<button click.delegate="newPerson()">Neu</button>
+
+<div if.bind="selectedPerson != null">
+  <h1>Neue Person hinzufügen</h1>
+  Vorname: <input type="text" size="20em" value.bind="selectedPerson.firstName"/><br />
+  Nachame: <input type="text" size="20em" value.bind="selectedPerson.lastName" /><br />
+  <button click.delegate="addPerson()">Hinzufügen</button>
+  <button click.delegate="selectedPerson = null">Abbrechen</button>
+</div>
+</template>
